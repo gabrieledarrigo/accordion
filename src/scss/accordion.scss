@@ -1,0 +1,107 @@
+@import "shared/variables";
+@import "shared/mixins";
+
+.accordion {
+    &__header {
+        background-color: $white;
+        border: 1px solid $grey-100;
+        height: 60px;
+        padding: 0 25px;
+    }
+
+    &__title {
+        color: $grey-500;
+        font: $regular $font-size-18 $font-family;
+        line-height: 60px;
+        margin: 0;
+    }
+}
+
+.panel {
+    background-color: $white;
+    border-right: 1px solid $grey-100;
+    border-left: 1px solid $grey-100;
+    border-bottom: 1px solid $grey-100;
+    padding: 0 25px;
+
+    &.is-open {
+        border: 1px solid $grey-100;
+        margin: 30px 0;
+
+        .panel__content {
+            display: block;
+            max-height: 1000px;
+        }
+
+        .panel__control {
+            background: transparent url('/dist/img/ic_chevron_up_blue_24px.svg') no-repeat center;
+        }
+    }
+
+    &__header {
+        align-content: center;
+        align-items: center;
+        display: flex;
+        height: 70px;
+        flex-wrap: wrap;
+
+        &--small {
+            height: 50px;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__hgroup {
+        flex: 2%;
+    }
+
+    &__title {
+        color: $blue-500;
+        font: $bold $font-size-14 $font-family;
+        margin: 0;
+    }
+
+    &__description {
+        color: $grey-200;
+        font: normal $font-size-12 $font-family;
+        margin: 12px 0 0;
+    }
+
+    &__control {
+        @include appearance(none);
+        background: transparent url('/dist/img/ic_chevron_down_blue_24px.svg') no-repeat center;
+        background-size: 26px;
+        border: none;
+        display: block;
+        flex: 0 1 auto;
+        height: 100%;
+        margin-right: 0;
+        transition: all 0.3s;
+        width: 50px;
+
+        &:hover {
+            cursor: pointer;
+            background-color: rgba($grey-100, 0.2);
+        }
+    }
+
+    &__content {
+        max-height: 0;
+        overflow: hidden;
+        transition: all 1s;
+
+        a {
+            color: $blue-500;
+        }
+
+        p {
+            color: $grey-500;
+            font-size: $font-size-13;
+            margin: 0;
+            padding: 25px 0;
+        }
+    }
+}

@@ -1,0 +1,48 @@
+@import "./shared/_variables";
+
+html,
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+html {
+    background-color: transparent;
+    line-height: normal;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+    background-color: $grey-50;
+	font-family: $font-family;
+}
+
+.masthead {
+    background: $grey-500;
+    height: 75px;
+    padding: 15px 30px;
+
+    &__subtitle,
+    &__title {
+        color: $white;
+        margin: 0;
+    }
+
+    &__subtitle {
+        text-transform: uppercase;
+    }
+
+    &__title {
+        font: normal 22px $font-family;
+    }
+}
+
+.container {
+    padding: 30px;
+}

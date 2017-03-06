@@ -1,0 +1,30 @@
+{
+  "name": "accordion",
+  "version": "0.1.0",
+  "description": "A vanilla Javascript accordion implementation",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "sass": "node-sass src/scss/ --output-style compressed  --output dist/css/",
+    "watch": "npm run sass && node-sass src/scss/ --watch --recursive --output dist/css/",
+    "copy": "copyfiles -f src/img/** dist/img/",
+    "serve": "static-server",
+    "build": "npm run copy && npm run sass && npm run serve"
+  },
+  "keywords": [
+    "accordion",
+    "components",
+    "es6"
+  ],
+  "author": "Gabriele D'Arrigo darrigo.g@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "copyfiles": "^1.2.0",
+    "mocha": "^3.2.0",
+    "node-sass": "^4.5.0",
+    "static-server": "^2.0.4"
+  },
+  "dependencies": {
+    "jsdom": "^9.11.0"
+  }
+}
