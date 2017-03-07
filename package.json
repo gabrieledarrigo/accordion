@@ -4,13 +4,13 @@
   "description": "A vanilla Javascript accordion component",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf dist/",
+    "clean": "del-cli dist/",
     "test": "mocha",
     "sass": "node-sass src/scss/ --output-style compressed  --output dist/css/",
     "watch": "npm run sass && node-sass src/scss/ --watch --recursive --output dist/css/",
     "copy": "copyfiles -u 1 src/js/accordion.js src/img/** dist",
-    "serve": "static-server",
-    "build": "npm run copy && npm run sass && npm run uglify"
+    "build": "npm run clean && npm run copy && npm run sass",
+    "server": "static-server"
   },
   "keywords": [
     "accordion",
@@ -21,6 +21,7 @@
   "license": "MIT",
   "devDependencies": {
     "copyfiles": "^1.2.0",
+    "del-cli": "^0.2.1",
     "mocha": "^3.2.0",
     "node-sass": "^4.5.0",
     "static-server": "^2.0.4",

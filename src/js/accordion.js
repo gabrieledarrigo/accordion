@@ -43,7 +43,6 @@ const template = (data) => {
                             </section>
                             <button class="panel__control"></button>
                         </header>
-
                         <div class="panel__content">
                             <p>${escape(panel.content)}</p>
                         </div>
