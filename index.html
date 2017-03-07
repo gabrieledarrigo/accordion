@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Accordion element</title>
+        <title>Accordion component</title>
         <meta name="description" content="A vanilla Javascript accordion implementation">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
@@ -14,88 +14,58 @@
     <body>
     	<main class="main">
     		<header class="masthead">
-                <h6 class="masthead__subtitle">Element</h6>
+                <h6 class="masthead__subtitle">Component</h6>
     			<h1 class="masthead__title">
     				Accordion
     			</h1>
     		</header>
 
-    		<section class="container">
-    			<div id="my-accordion"></div>
+    		<div class="container">
+                <div class="row">
+                    <section class="main-content">
+                        <div id="my-accordion"></div>
+                    </section>
 
-                <article class="accordion">
-                    <header class="accordion__header">
-                        <h2 class="accordion__title">Main Accordion Title</h2>
-                    </header>
+                    <aside class="sidebar">
+                        <article class="claim">
+                            <p>
+                                A vanilla Javascript accordion component
+                            </p>
 
-                    <div class="accordion__panels">
-                        <div class="panel">
-                            <header class="panel__header">
-                                <section class="panel__hgroup">
-                                    <h3 class="panel__title">
-                                        My profile
-                                    </h3>
-                                    <h5 class="panel__description">
-                                        Change your profile information, email, and other personal details
-                                    </h5>
-                                </section>
-
-
-                                <button class="panel__control"></button>
-                            </header>
-
-                            <div class="panel__content">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In auctor, massa vel molestie elementum, elit elit luctus nisi, interdum aliquet turpis tortor maximus odio. Proin id ipsum et risus posuere bibendum vel non arcu.
-                                    Aliquam eros purus, aliquet et odio vitae, dignissim placerat est. Proin dapibus varius ipsum vitae molestie.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="panel">
-                            <header class="panel__header">
-                                <section class="panel__hgroup">
-                                    <h3 class="panel__title">
-                                        Change password
-                                    </h3>
-                                    <h5 class="panel__description">
-                                        Change your password to access the LMS
-                                    </h5>
-                                </section>
-
-                                <button class="panel__control"></button>
-                            </header>
-
-                            <div class="panel__content">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In auctor, massa vel molestie elementum, elit elit luctus nisi, interdum aliquet turpis tortor maximus odio. Proin id ipsum et risus posuere bibendum vel non arcu.
-                                    Aliquam eros purus, aliquet et odio vitae, dignissim placerat est. Proin dapibus varius ipsum vitae molestie.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="panel">
-                            <header class="panel__header">
-                                <section class="panel__hgroup">
-                                    <h3 class="panel__title">
-                                        Change password
-                                    </h3>
-                                    <h5 class="panel__description">
-                                        Change your password to access the LMS
-                                    </h5>
-                                </section>
-
-                                <button class="panel__control"></button>
-                            </header>
-
-                            <div class="panel__content">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In auctor, massa vel molestie elementum, elit elit luctus nisi, interdum aliquet turpis tortor maximus odio. Proin id ipsum et risus posuere bibendum vel non arcu.
-                                    Aliquam eros purus, aliquet et odio vitae, dignissim placerat est. Proin dapibus varius ipsum vitae molestie.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-    		</section>
+                            <footer>
+                                <small>Author <a href="https://github.com/gabrieledarrigo" title="Who am I">Gabriele D'Arrigo</a> - <a href="mailto:darrigo.g@gmail.com" title="Contact me">darrigo.g@gmail.com</a></small>
+                            </footer>
+                        </article>
+                    </aside>
+                </div>
+    		</div>
     	</main>
+
+        <script src="dist/js/accordion.js"></script>
+        <script>
+            const options = {
+                container: '#my-accordion',
+                mainTitle: 'Your settings',
+                panels: [
+                    {
+                        title: 'My profile',
+                        subtitle: 'Change your profile information, email, and other personal details',
+                        content: 'Lorem ipsum dolor sit amet, consectetur dipiscing elit.In auctor, massa vel molestie elementum, elit elit luctus nisi, interdum aliquet turpis tortor maximus odio. Proin id ipsum et risus posuere bibendum vel non arcu.Aliquam eros purus, aliquet et odio vitae'
+                    },
+                    {
+                        title: 'Change Password',
+                        subtitle: 'Change your password to access the LMS',
+                        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In auctor, massa vel molestie elementum, elit elit luctus nisi, interdum aliquet turpis tortor maximus odio. Proin id ipsum et risus posuere bibendum vel non arcu.Aliquam eros purus, aliquet et odio vitae'
+                    },
+                    {
+                        title: 'Delete account',
+                        subtitle: 'Delete you account and personal data',
+                        content: '<p onclick="alert(\'ok\')">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In auctor, massa vel molestie elementum, elit elit luctus nisi, interdum aliquet turpis tortor maximus odio. Proin id ipsum et risus posuere bibendum vel non arcu.Aliquam eros purus, aliquet et odio vitae'
+                    }
+                ]
+            };
+
+            new Accordion(options);
+        </script>
     </body>
 </html>

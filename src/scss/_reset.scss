@@ -1,0 +1,17 @@
+html,
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+html {
+    background-color: transparent;
+    line-height: normal;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}

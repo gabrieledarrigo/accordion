@@ -1,0 +1,56 @@
+body {
+    background-color: $grey-50;
+    font-family: $font-family;
+}
+
+.masthead {
+    background: $grey-500;
+    height: 75px;
+    padding: 15px 30px;
+
+    &__subtitle,
+    &__title {
+        color: $white;
+        margin: 0;
+    }
+
+    &__subtitle {
+        text-transform: uppercase;
+    }
+
+    &__title {
+        font: normal 22px $font-family;
+    }
+}
+
+.container {
+    @include container(25px);
+}
+
+.main-content {
+    @include reset-column();
+
+    @media only screen and (min-width: $scree-medium) {
+        @include column(5, 8);
+    }
+
+    @media only screen and (min-width: $screen-large) {
+        @include column(8, 12);
+    }
+}
+
+.sidebar {
+    @include reset-column();
+
+    @media only screen and (min-width: $scree-medium) {
+        @include column(3, 8);
+    }
+
+    @media only screen and (min-width: $screen-large) {
+        @include column(4, 12);
+    }
+}
+
+.claim {
+    padding: 25px;
+}

@@ -67,6 +67,20 @@ describe('Accordion', () => {
             }]
         });
 
-        assert.equal(document.querySelector('.panel__content').innerHTML, '&lt;p&gt;Lorem Ipsum&lt;/p&gt;');
+        assert.equal(document.querySelector('.panel__content p').innerHTML, '&lt;p&gt;Lorem Ipsum&lt;/p&gt;');
+    });
+
+    it('should open and close a panel when a user click on its panel header', () => {
+        new Accordion(options);
+
+        // Rely on first element
+        const panel = document.querySelector('.panel');
+        const header = panel.querySelector('.panel__header');
+
+        header.click();
+        assert.equal(panel.classList.contains('is-open'), true);
+
+        header.click();
+        assert.equal(panel.classList.contains('is-open'), false);
     });
 });

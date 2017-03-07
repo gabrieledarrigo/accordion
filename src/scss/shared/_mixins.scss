@@ -3,3 +3,42 @@
     -moz-appearance: $value;
     appearance: $value;
 }
+
+// Very simple grid mixins inspired by
+// @see http://thesassway.com/intermediate/simple-grid-mixins
+@mixin container($gutter: 25px, $max-width: 100%) {
+    padding: 25px 0;
+    margin: 0 auto;
+    max-width: 100%;
+    width: 100%;
+
+    @media only screen and (min-width: $max-width) {
+        max-width: $max-width;
+    }
+}
+
+@mixin row() {
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin column($col: 1, $total: 12, $gutter: 30px) {
+    & {
+        float: left;
+        min-height: 1px;
+        padding: $gutter;
+        width: percentage($col / $total);
+    }
+}
+
+@mixin reset-column() {
+    & {
+        float: none;
+        padding: 0;
+        width: 100%;
+    }
+}
