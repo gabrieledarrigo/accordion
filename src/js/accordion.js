@@ -33,7 +33,7 @@ const template = (data) => {
         <div class="accordion__panels">
             ${data.panels.map((panel, i) => {
                 return `<div class="panel" data-id="${i}">
-                            <header class="panel__header">
+                            <header class="panel__header ${panel.subtitle ? '' : ''}">
                                 <section class="panel__hgroup">
                                     <h3 class="panel__title">${panel.title}</h3>
                                     <h5 class="panel__subtitle">${panel.subtitle}</h5>

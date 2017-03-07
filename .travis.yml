@@ -1,0 +1,14 @@
+language: node_js
+env:
+  - CXX=g++-4.8
+node_js:
+  - "7.0"
+sudo: false
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+after_script:
+  - npm run build
