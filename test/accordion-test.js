@@ -34,7 +34,7 @@ describe('Accordion', () => {
     });
 
     it('should render an accordion component', () => {
-        const accordion = new Accordion(options);
+        new Accordion(options);
         const component = document.querySelector('.accordion');
 
         assert.equal(component.querySelector('.accordion__title').innerHTML, options.mainTitle);
@@ -49,12 +49,24 @@ describe('Accordion', () => {
     });
 
     it('should not render the accordion header if the main title is not present', () => {
-        const accordion = new Accordion({
+        new Accordion({
             container: '#placeholder',
             panels: []
         });
-        const component = document.querySelector('.accordion');
 
-        assert.equal(component.querySelector('.accordion__header'), null);
+        assert.equal(document.querySelector('.accordion__header'), null);
+    });
+
+    it('should escape the panel content', () => {
+        new Accordion({
+            container: '#placeholder',
+            panels: [{
+                title: 'A second title',
+                subtitle: 'dolor sit amet',
+                content: '<p>Lorem Ipsum</p>'
+            }]
+        });
+
+        assert.equal(document.querySelector('.panel__content').innerHTML, '&lt;p&gt;Lorem Ipsum&lt;/p&gt;');
     });
 });
