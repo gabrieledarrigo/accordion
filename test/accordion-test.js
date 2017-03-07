@@ -26,7 +26,7 @@ describe('Accordion', () => {
     });
 
     afterEach(() => {
-        document.body.removeChild(document.querySelector('#placeholder'))
+        document.body.removeChild(document.querySelector('#placeholder'));
     });
 
     it('should throw an error if no container option is specified', () => {
@@ -39,6 +39,22 @@ describe('Accordion', () => {
 
         assert.equal(component.querySelector('.accordion__title').innerHTML, options.mainTitle);
         assert.equal(component.querySelectorAll('.panel').length, options.panels.length);
+
+        [].slice.call(component.querySelectorAll('.panel')).forEach(panel => {
+            const id = panel.getAttribute('data-id');
+
+            assert.equal(panel.querySelector('.panel__title').textContent, options.panels[id].title);
+            assert.equal(panel.querySelector('.panel__subtitle').textContent, options.panels[id].subtitle);
+        });
     });
 
+    it('should not render the accordion header if the main title is not present', () => {
+        const accordion = new Accordion({
+            container: '#placeholder',
+            panels: []
+        });
+        const component = document.querySelector('.accordion');
+
+        assert.equal(component.querySelector('.accordion__header'), null);
+    });
 });

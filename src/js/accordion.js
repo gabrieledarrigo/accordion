@@ -1,27 +1,46 @@
 const template = (data) => {
-    const header = (mainTitle) => {
-        return mainTitle
-            ? `<header class="accordion__header">
-                   <h2 class="accordion__title">${data.mainTitle}</h2>
-               </header>`
-            : '';
+
+    /**
+     * Thank you mustache : P
+     * @param str
+     * @return {string}
+     * @see https://github.com/janl/mustache.js/blob/master/mustache.js#L60
+     */
+    const escape = (str) => {
+        var entityMap = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;',
+            '/': '&#x2F;',
+            '`': '&#x60;',
+            '=': '&#x3D;'
+        };
+
+        return String(str).replace(/[&<>"'`=\/]/g, s => entityMap[s]);
     };
 
     return `<article class="accordion">
-        ${header(data.mainTitle)}
+        ${
+            data.mainTitle
+                ? `<header class="accordion__header">
+                        <h2 class="accordion__title">${data.mainTitle}</h2>
+                    </header>`
+                : ''
+        }
 
         <div class="accordion__panels">
-            ${data.panels.map((panel) => {
-                return `<div class="panel">
-                        <header class="panel__header">
-                            <section class="panel__hgroup">
-                                <h3 class="panel__title">${panel.title}</h3>
-                                <h5 class="panel__description">${panel.subtitle}</h5>
-                            </section>
-                            <button class="panel__control">${panel.content}</button>
-                        </header>
-
-                        <div class="panel__content"></div>
+            ${data.panels.map((panel, i) => {
+                return `<div class="panel" data-id="${i}">
+                            <header class="panel__header">
+                                <section class="panel__hgroup">
+                                    <h3 class="panel__title">${panel.title}</h3>
+                                    <h5 class="panel__subtitle">${panel.subtitle}</h5>
+                                </section>
+                                <button class="panel__control"></button>
+                            </header>
+                            <div class="panel__content">${escape(panel.content)}</div>
                     </div>`;
             }).join()}
         </div>
@@ -31,7 +50,7 @@ const template = (data) => {
 class Accordion {
     constructor(opt) {
         this.opt = opt || {};
-        this.container = this.opt.container;
+        this.container = this.opt.container || { container: null };
 
         if (!this.opt.container) {
             throw new Error('Missing container option');
