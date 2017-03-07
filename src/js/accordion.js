@@ -30,8 +30,13 @@ const template = (data) => {
 
 class Accordion {
     constructor(opt) {
-        this.container = opt.container;
-        this.opt = opt;
+        this.opt = opt || {};
+        this.container = this.opt.container;
+
+        if (!this.opt.container) {
+            throw new Error('Missing container option');
+        }
+
         this.render();
     }
 

@@ -29,6 +29,10 @@ describe('Accordion', () => {
         document.body.removeChild(document.querySelector('#placeholder'))
     });
 
+    it('should throw an error if no container option is specified', () => {
+        assert.throws(() => { new Accordion() }, /Missing container option/);
+    });
+
     it('should render an accordion component', () => {
         const accordion = new Accordion(options);
         const component = document.querySelector('.accordion');
@@ -36,4 +40,5 @@ describe('Accordion', () => {
         assert.equal(component.querySelector('.accordion__title').innerHTML, options.mainTitle);
         assert.equal(component.querySelectorAll('.panel').length, options.panels.length);
     });
+
 });
